@@ -1,12 +1,16 @@
 {% macro ChatList(chat_list) %}
 <div>
-  <ul class="border rounded flex flex-col gap-5">
+  <ul class="border-2 rounded flex flex-col gap-2">
     {% for chat in chat_list %}
-    <li class="border">
+    <li class="border bg-purple-200">
       <a href="{{chat.chat_id}}">
         {{chat.chat_name}}
-        <div>
-          {{chat.last_message}}
+        <div class="text-gray-700">
+          {% if chat.last_message %}
+            {{ chat.last_message }}
+          {% else %}
+            The are no messages in this chat
+          {% endif %}
         </div>
       </a>
     </li>

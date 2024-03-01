@@ -17,7 +17,6 @@ pub async fn index(State(state): State<Arc<AppState>>) -> Response {
 
     let mut context = tera::Context::new();
     context.insert("chat_list", &chat_list);
-    // todo: insert values
 
     Response::builder()
         .header("Content-Type", "text/html")
