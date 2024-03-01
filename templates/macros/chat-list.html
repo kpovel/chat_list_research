@@ -1,0 +1,16 @@
+{% macro ChatList(chat_list) %}
+<div>
+  <ul class="border rounded flex flex-col gap-5">
+    {% for chat in chat_list %}
+    <li class="border">
+      <a href="{{chat.chat_id}}">
+        {{chat.chat_name}}
+        <div>
+          {{chat.last_message}}
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro input %}
