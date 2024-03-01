@@ -7,6 +7,8 @@ edition = "2021"
 
 [dependencies]
 axum = "0.7.4"
+lazy_static = "1.4.0"
 libsql = { version = "0.2.0", featurs = ["full"] }
+tera = "1.19.1"
 tokio = { version = "1.36.0", features = ["full"] }
 tower = "0.4.13"

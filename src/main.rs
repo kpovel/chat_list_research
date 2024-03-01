@@ -1,9 +1,10 @@
-use axum::{routing::get, Router};
+use axum::{body::Body, response::Response, routing::get, Router};
 use libsql::Connection;
 use std::{error::Error, sync::Arc};
 use tokio::net::TcpListener;
 
 mod db;
+mod templates;
 
 struct Conf {
     db_client: Connection,
@@ -12,7 +13,6 @@ struct Conf {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     let db_client = db::db_client()?;
-
     let conf = Arc::new(Conf { db_client });
 
     let app = Router::new().route("/", get(index));
@@ -24,6 +24,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-async fn index() -> &'static str {
-    return "Hello world";
+async fn index() -> Response {
+    Response::builder()
+        .header("Content-Type", "text/html")
+        .body(Body::from(templates::render_template("index.html")))
+        .unwrap()
 }
