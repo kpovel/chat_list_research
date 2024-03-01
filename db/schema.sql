@@ -12,17 +12,14 @@ create table if not exists message (
     foreign key (chat_id) references chat (id)
 );
 
+-- last message in all chats
+with last_chat_message as (select chat_id, message, max(sent_at) as sent_at
+                           from message
+                           group by chat_id)
 
-insert into chat (name)
-values ('chat_deeznuts');
-insert into message (chat_id, message)
-values (1, 'last message');
-
-
--- last message from a chat
-select *
-from message
-where chat_id = 1
-ORDER BY sent_at desc 
-limit 1;
-
+select chat.id     as chat_id,
+       chat.name   as chat_name,
+       sent_at,
+       lcm.message as last_message
+from chat
+         left join last_chat_message lcm on chat.id = lcm.chat_id;
