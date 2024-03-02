@@ -11,7 +11,7 @@ pub enum ChatMessages {
 
 #[derive(Debug, Serialize)]
 pub struct Message {
-    message_id: u32,
+    id: u32,
     message: String,
     sent_at: String,
 }
@@ -45,7 +45,7 @@ where chat_id = ?1;",
     let mut messages = vec![];
     while let Ok(Some(message)) = rows.next() {
         messages.push(Message {
-            message_id: message.get(0).unwrap(),
+            id: message.get(0).unwrap(),
             message: message.get(1).unwrap(),
             sent_at: message.get(2).unwrap(),
         })

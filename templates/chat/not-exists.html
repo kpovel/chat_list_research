@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% import "macros.html" as macros %}
+
+{% block body %}
+<main class="md:grid grid-cols-3">
+  <div class="md:block hidden">
+    {{ macros::ChatList(chat_list=chat_list) }}
+  </div>
+  <div class="col-span-2">
+    Chat doesn't exist
+  </div>
+</main>
+{% endblock body %}
+

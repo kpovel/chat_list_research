@@ -17,4 +17,19 @@
     {% endfor %}
   </ul>
 </div>
-{% endmacro input %}
+{% endmacro ChatList %}
+
+{% macro Chat(messages) %}
+<div>
+  <ul class="border-2 rounded flex flex-col gap-2">
+    {% for message in messages %}
+    <li class="border bg-purple-200" id="{{message.id}}">
+      {{message.message}}
+      <div class="text-gray-700 text-sm">
+          {{ message.sent_at }}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro Chat %}
