@@ -3,7 +3,7 @@
   <ul class="border-2 rounded flex flex-col gap-2">
     {% for chat in chat_list %}
     <li class="border bg-purple-200">
-      <a href="{{chat.chat_id}}">
+      <a href="/{{chat.chat_id}}" class="block">
         {{chat.chat_name}}
         <div class="text-gray-700">
           {% if chat.last_message %}

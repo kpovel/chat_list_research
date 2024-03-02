@@ -2,8 +2,8 @@
 {% import "macros/chat-list.html" as macros %}
 
 {% block body %}
-<div>
+<main class="md:grid grid-cols-3">
   {{ macros::ChatList(chat_list=chat_list) }}
-</div>
+  <div class="col-span-2 md:block hidden">Chat isn't selected</div>
+</main>
 {% endblock body %}
-

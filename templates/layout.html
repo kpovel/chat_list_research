@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}Chat list{% endblock title %}</title>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
   </head>
 
-  <body class="p-2">
+  <body class="p-2" hx-boost="true">
     {% block body %}{% endblock body %}
   </body>
 </html>
