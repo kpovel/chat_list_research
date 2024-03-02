@@ -23,3 +23,9 @@ select chat.id     as chat_id,
        lcm.message as last_message
 from chat
          left join last_chat_message lcm on chat.id = lcm.chat_id;
+
+select id as message_id, message, sent_at
+from message
+where chat_id = :chat_id;
+
+select count(*) from chat where id = :chat_id;

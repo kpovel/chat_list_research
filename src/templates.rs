@@ -1,10 +1,10 @@
+use crate::AppState;
 use axum::{routing::get, Router};
 use lazy_static::lazy_static;
 use std::sync::Arc;
 use tera::Tera;
 
-use crate::AppState;
-
+mod chat;
 mod index;
 
 lazy_static! {
@@ -33,5 +33,6 @@ pub fn render_template(template_name: &str, context: tera::Context) -> String {
 pub fn render_templates(state: Arc<AppState>) -> Router {
     Router::new()
         .route("/", get(index::index))
+        .route("/:chat_id", get(chat::chat))
         .with_state(state)
 }
